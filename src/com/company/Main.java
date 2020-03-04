@@ -80,23 +80,25 @@ public class Main {
                         bossHealth = bossHealth - heroesDamage[i];
                     }
                 }
+            } else {
+                heroesHealth[i] = 0;
             }
         }
     }
 
     public static void medic() {
-        for (int i = 0; i < heroesHealth.length; i++) {
         Random random = new Random();
         int r = random.nextInt(3) + 1;
         int s = random.nextInt(2);
-            if (heroesHealth[i] > 0 && heroesHealth[i] <= 200) {
-                heroesHealth[s] = heroesHealth[s] + heroesDamage[3] * r;
-
-            }
-
+        if (heroesHealth[s] > 0 && heroesHealth[s] <= 100 && heroesHealth[3] > 0) {
+            heroesHealth[s] = heroesHealth[s] + heroesDamage[3] * r;
+            System.out.println("medicHeal" + heroesAttackType[s]);
+        } else {
+            System.out.println(heroesAttackType[s] + "alreadyisdead");
         }
 
     }
+
 
     public static void printStatistic() {
         System.out.println("________________");
